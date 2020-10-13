@@ -1,0 +1,110 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+a {
+    text-decoration: none;
+}
+.imsi-title {
+    color: #003c8a;
+    font-weight: 700;
+    font-size: 3.2em;
+    letter-spacing: -0.1em;
+}
+
+.imsi-category {
+    text-align: left;
+    font-weight: 500;
+    font-size: 1.2em;
+    letter-spacing: -0.1em;
+    margin: 0;
+    padding-top: 10px;
+}
+
+.imsi-text {
+    text-align: left;
+    font-weight: 300;
+    font-size: 1.2em;
+    letter-spacing: -0.1em;
+}
+
+.point {
+    font-weight: 900;
+    color: #003c8a;
+}
+
+p {
+    line-height: 10px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-image: url("../img/IMSI_Background.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.logo {
+    margin-top: 50px;
+    
+}
+
+.imsi-sub-frame {
+    position: relative;
+    width: 850px;
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:20px;
+}
+
+.imsi-left{
+    position: absolute;
+    left:0;
+    margin-top: 30px;
+    width: 425px;
+    height: 540px;
+    border-right: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.imsi-right {
+    position: absolute;
+    right:0;
+    margin-top: 30px;
+    width: 420px;
+    height: 540px;
+}
+
+.copyright {
+    margin-top: 20px;
+}
+
+.imsi-left-content-frame {
+    margin : 0 auto;
+    width: 350px;
+}
+
+.imsi-button {
+    margin : 0 auto;
+    color: #FFF;
+    border: 1px solid #003c8a;
+    background-color: #003c8a;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 390px;
+    transition: 0.2s;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.imsi-button:hover {
+    border: 1px solid #0a1b7a;
+    background-color: #0a1b7a;
+}
+

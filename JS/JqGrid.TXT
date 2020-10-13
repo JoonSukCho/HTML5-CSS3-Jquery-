@@ -1,0 +1,51 @@
+$("#mainGrid").jqGrid({
+    url: '<c:url value="/dsgnDoc/getBisnFileGridList.do"></c:url>', /* 그리드의 데이터를 가져올 경로 */
+    
+datatype: "xml", /* 가져온 데이터의 형식 (XML/JSON/ROW)*/
+
+    mtype: "POST", /* ajax 호출 방식(GET/POST) */
+
+    width: parent.$("#rst_lst").width() - 2, // 우측 여백 2px; /* 그리드 너비 */
+
+    height: parent.$("#data_lst_area").height() - 55 - 29, // 자료목록 상단, 하단 페이징 사이즈 처리
+
+    colNames: ['<c:out value="${gridHeaderName}" escapexml="false"></c:out>'], /* 컬럼 이름 */
+
+    colModel: ['<c:out value="${gridHeader}" escapexml="false"></c:out>'], /* 컬럼 구조(index에 설정
+    된 이름이 정렬시 정렬 기준열 이름으로 넘어감) */
+
+    multiselect: true,
+    multiboxonly: true, // 체크 박스를 클릭해야 다중 선택 가능
+
+    rownumbers: true, // 행번호 표시여부
+
+    rownumWidth: 30, // 행번호 열의 너비
+
+    //scrollOffset : 0, // 0으로 선언할 경우 Grid 스크롤바 표시 않함
+
+    shrinkToFit: false, /* RowWidth 고정 */
+
+    pager: jQuery("#divPager"), /* 페이저 설정 */
+
+    rowNum: 100, /* 페이지당 레코드수 초기값 */
+
+    rowList: [100, 200], /* 페이지당 레코드수 선택 
+가능한 값 */
+    viewrecords: true, /* 페이저에 총 레코드수를 표시할 것인지 설정 */
+
+    loadtext: "로딩중...", /* 데이터 로딩중에 표시될 메시지 */
+
+    sortname: "t2.clfy_id", /* 처음 정렬될 컬럼 */
+
+    sortorder: "asc", /* 정렬방법 (asc/desc) */
+
+    imgpath: '<c:url value="/images/jqGrid"></c:url>', /* 그리드에서 사용되는 이미지 경로 */
+
+    loadui: "enable", // 로딩될때 메세지 표시여부
+
+ xmlmap: xml과 mapping 되는 값
+
+ 
+
+
+출처: https://javafactory.tistory.com/1217 [FreeLife의 저장소]

@@ -1,0 +1,34 @@
+*이미지 정렬하고싶을때, 부모에게 text-align: center; 등.
+white-space : nowrap;
+공백을 아무리 넣어도 1개만 표시되며, 텍스트의 줄바꿈이 이루어지지 않습니다.
+
+overflow : hidden;
+해당 요소가 부모영역을 벗어난 경우, 벗어난 컨텐츠는 감추어집니다.
+
+text-overflow : ellipsis;
+텍스트가 영역을 벗어나면 '...' 가 나타납니다.
+
+background-repeat: no-repeat;
+ - 배경 반복되는 패턴 없앰
+
+background-position: center;
+ - 배경사진을 중앙으로
+
+background-size: cover;
+ - 배경사진을 가득 채움
+
+background-attachment: fixed;
+ - 배경사진이 스크롤을 움직여도 고정됨
+@@@@@@@@@@@@@@@@@@@@@@@
+
+hover... ex)  .main-frame
+ - 마우스를 대면 변화 일어남. (변화 하고자 하는 속성만 적으면 됨)
+
+transition: 0.3s;
+ - hover를 통해 변화가 일어날 때 약간의 지연시간을 줘서 부드럽게 변화하도록 함
+
+GoogleFont 검색 - @import 복사하여 css 맨위에 넣음 - fontFaimily 복사해서 원하는 곳에 넣음
+ - 폰트 변경
+
+cursor: pointer;
+ - 마우스 올려놓고 있으면 모양 변함. 손가락 모양 등

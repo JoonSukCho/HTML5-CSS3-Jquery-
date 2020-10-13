@@ -1,0 +1,23 @@
+.title{
+    border: 5px solid black;
+    margin:0 auto;
+    width: 1000px;
+    background-color: gray;
+    position: fixed;
+    border-radius: 5px;
+}
+
+.content{
+    border: 5px solid red;
+    margin:50px auto;
+    width: 1000px;
+    height: 1000px; 
+    border-radius: 5px;
+
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+

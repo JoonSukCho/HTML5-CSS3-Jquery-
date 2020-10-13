@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>New_Project</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <meta charset="utf-8" />
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" />
+
+  <script type="text/javascript">
+
+    /*window.onload = function () {
+      setTimeout(function () {
+        scrollTo(0, 0);
+      }, 200);
+    }*/
+
+    $(document).ready(function () {
+
+      //$("html").scrollTop(0); // html scroll 위치가 top:0
+
+      $('.nav-nav').on('click', function () {
+      })
+
+      function searchNaver() { // input 스트링 네이버 검색창으로 열기
+        var a = $("#search-text").val();
+        var searchItem = "http://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=" + a;
+        window.location.href = searchItem;
+      }
+
+      //$("html, body").scrollTop(0);
+      $("#search-text").keypress(function (e) {
+        if (e.keyCode == 13) {
+          searchNaver();
+        }
+      });
+
+      $("#search-btn").on('click', function () {
+        searchNaver();
+      });
+
+      $(".logo").on('click', function () {
+        $("html").scrollTop(0); // html scroll 위치가 top:0
+        window.location.reload(); // 새로고침
+      })
+
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 200) {
+          $('.goToTop').fadeIn();
+        } else {
+          $('.goToTop').fadeOut();
+        }
+      });
+
+      $('.goToTop').click(function () {
+        $('html, body').animate({ scrollTop: 0 });
+        return false;
+      });
+
+      $('.nav a').on('click', function () {
+        var whats = $(this).attr('whats');
+        $(this).attr('href', 'http://' + whats + '.naver.com');
+      });
+
+
+      function banner(cnt) {
+        if (cnt < 6) {
+          setTimeout(function () {
+            cnt = cnt + 1;
+            console.log(cnt);
+            $('#banner-img').attr('src', '../data/img/banner' + cnt + '.jpg');
+            banner(cnt);
+          }, 3000);
+        }
+      }
+      setInterval(function () { banner(0) }, 18000);
+      setInterval(function () { tick() }, 4000);
+
+      function news() {
+        $('.news-main-content-list li').find('a').each(function () {
+          var sites = $(this).attr('st');
+          $(this).attr('target', '_blank');
+          $(this).attr('href', 'http://www.' + sites + '.com');
+        });
+        $('.news-image').each(function () {
+          var st = $(this).attr('st');
+          $(this).attr('src', '../data/img/' + st + '.png');
+        });
+      }
+
+      function tick() {
+        $('.news-header-text-swap li:first').slideDown(function () {
+          $(this).appendTo($('.news-header-text-swap')).slideDown();
+        });
+      }
+
+      function shoppingitems(listNum) {
+        $('.shopping-item').each(function () {
+          $(this).attr('src', '../data/img/shop' + listNum + '.jpg');
+          listNum = listNum + 1;
+        })
+
+        listNum = 1;
+        $('.shopping-list a').each(function () {
+          $(this).attr('href', '../data/img/shop' + listNum + '.jpg');
+          listNum = listNum + 1;
+        })
+
+      }
+
+      function shopbtn(page) {
+        var totalpage = 3;
+        shopli(page);
+        $('.shoppage li:eq(0)').text(page);
+        $('.shoppage li:eq(1)').text(totalpage);
+
+
+        $('#shopprev').on('click', function () {
+          page = page - 10;
+          if (page < 0) {
+            page = 21;
+            shoppingitems(page);
+          }
+          shoppingitems(page);
+          shopli(page);
+          $('.shoppage li:eq(0)').text((page + 9) / 10);
+
+        });
+
+        $('#shopnext').on('click', function () {
+          page = page + 10;
+          if (page > 29) {
+            page = 1;
+            shoppingitems(page + 10);
+          }
+          shoppingitems(page);
+          shopli(page);
+          $('.shoppage li:eq(0)').text((page + 9) / 10);
+
+        });
+
+      }
+
+
+      function shopli(page) {
+        var shoppingtxt = [
+          ['요즘별게다나와', '써보니신세계야'],
+          ['이거 썼더니~', '삶의질수직상승'],
+          ['이거써보면', '다른건 못써~'],
+          ['이가격에 이걸?', '가을 SALE 파티!'],
+          ['가을엔비싸요!', '이가격또없어'],
+          ['이거 썼더니~', '삶의질수직상승'],
+          ['이가격에 이걸?', '가을 SALE 파티!'],
+          ['가을엔비싸요!', '이가격또없어'],
+          ['이거 썼더니~', '삶의질수직상승']
+        ];
+        var shoppingtxt2 = [
+          ['요즘별게다나와', '써보니신세계야!'],
+          ['이거써보면', '다른건 못써~'],
+          ['이거 썼더니~', '삶의질수직상승'],
+          ['이거써보면', '다른건 못써~'],
+          ['이가격에 이걸?', '가을 SALE 파티!'],
+          ['이거 썼더니~', '삶의질수직상승'],
+          ['요즘별게다나와', '써보니신세계야'],
+          ['이가격에 이걸?', '가을 SALE 파티!'],
+          ['요즘별게다나와', '써보니신세계야']
+        ];
+        var shoppingtxt3 = [
+          ['요즘별게다나와', '써보니신세계야~'],
+          ['이거 썼더니~', '삶의질수직상승'],
+          ['이거써보면', '다른건 못써~'],
+          ['이거 썼더니~', '삶의질수직상승'],
+          ['가을엔비싸요!', '이가격또없어'],
+          ['이거 썼더니~', '삶의질수직상승'],
+          ['이가격에 이걸?', '가을 SALE 파티!'],
+          ['가을엔비싸요!', '이가격또없어'],
+          ['이거 썼더니~', '삶의질수직상승']
+        ];
+
+
+        for (var i = 0; i < 9; i++) {
+          for (var j = 0; j < 2; j++) {
+            switch (page) {
+              case 1: $('.shopping-' + i + 'text li:eq(' + j + ')').text(shoppingtxt[i][j]);
+                break;
+              case 11: $('.shopping-' + i + 'text li:eq(' + j + ')').text(shoppingtxt2[i][j]);
+                break;
+              case 21: $('.shopping-' + i + 'text li:eq(' + j + ')').text(shoppingtxt3[i][j]);
+                break;
+            }
+          }
+        } // li:eq(0) - li의 첫 번째 속성
+      }
+
+      function navscroll(mov) {
+
+        $('.left-middle-nav-left-btn').on('click', function () {
+          $('.left-middle-content-nav-ul').scrollLeft($('.left-middle-content-nav-ul').scrollLeft() - mov);
+        });
+
+        $('.left-middle-nav-right-btn').on('click', function () {
+          $('.left-middle-content-nav-ul').scrollLeft($('.left-middle-content-nav-ul').scrollLeft() + mov);
+        });
+      }
+
+
+      $('.left-middle-content-nav-ul a').each(function () {
+        $(this).on('click', function () {
+          $(this).addClass('left-nav-border');
+          $(this).siblings().removeClass('left-nav-border');
+          var contents = $(this).attr('mp');
+          console.log(contents);
+
+          $.ajax({
+            url: contents + ".html",
+            success: function (data) {
+              $('.left-middle-content').html(data);
+            }
+          })
+        })
+
+        $('.left-middle-content-nav-ul a:first').addClass('left-nav-border');
+
+        $.ajax({
+          url: "living.html",
+          success: function (data) {
+            $('.left-middle-content').html(data);
+          }
+        })
+
+
+
+      });
+
+      /*$('.left-middle-nav').each(function () {
+        var offset = $(this).position();
+        $(this).on('click', function () {
+          $('.left-middle-content-nav-ul').scrollLeft(offset.left);
+          console.log(offset);
+        })
+      })*/
+
+
+      //$('.left-middle-content-nav-ul a').attr('href', '1');
+
+
+      $('.refresh-item').on('click', function () {
+        var arr = new Array();
+        var ar = new Array();
+        var temp;
+        var rnum;
+
+        for (var k = 1; k <= 3; k++) {
+          arr.push($('.playitem' + k).offset().top)
+          ar.push(k);
+        }
+
+        for (var i = 0; i < ar.length; i++) {
+          rnum = Math.floor(Math.random() * 3);
+          temp = ar[i];
+          ar[i] = ar[rnum];
+          ar[rnum] = temp;
+
+        }
+
+        for (var j = 0; j < ar.length; j++) {
+          $('.playitem' + ar[j]).offset({ top: arr[j] });
+        }
+      })
+
+      //$('.playitem' + ran).offset({ top: i1 });
+      // $('.playitem' + ran).offset({ top: i2 });
+      //$('.playitem' + ran).offset({ top: i3 });
+
+      //console.log(i + ran);
+
+
+
+      news();
+      shoppingitems(1);
+      shopbtn(1);
+      navscroll(35);
+    });
+
+  </script>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      text-decoration: none;
+      border-collapse: collapse;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      font-family: "Noto Sans KR", sans-serif;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    .frame {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      margin: 0 auto;
+      display: block;
+      align-items: center;
+    }
+
+    .header-container {
+      position: relative;
+      top: 0;
+      width: 1000px;
+      height: 115px;
+      margin: 50px auto 0px auto;
+    }
+
+    .search-wrap {
+      position: relative;
+      display: flex;
+      width: 700px;
+      margin: 0px auto 20px auto;
+    }
+
+    .search {
+      position: relative;
+      display: flex;
+      width: 100%;
+    }
+
+    .searchTerm {
+      width: 100%;
+      border: solid rgb(0, 199, 60) 3px;
+      border-right: none;
+      padding: 5px;
+      height: 50px;
+      border-radius: 2px 0 0 2px;
+      outline: none;
+      color: black;
+    }
+
+    #search-text {
+      font-size: 18px;
+      font-weight: bolder;
+    }
+
+    .searchButton {
+      width: 60px;
+      height: 50px;
+      border: 1px solid rgb(0, 199, 60);
+      background: rgb(0, 199, 60);
+      text-align: center;
+      color: #fff;
+      border-radius: 0 2px 2px 0;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .logo {
+      width: 250px;
+      background: url("../data/img/Naver_logo.png");
+      background-position: center;
+      background-size: cover;
+      cursor: pointer;
+    }
+
+    .nav-wrap {
+      display: flex;
+      border-top: 1px solid #e3e7ee;
+      border-bottom: 1px solid #e3e7ee;
+    }
+
+    .nav {
+      padding: 10px;
+      word-spacing: 15px;
+      margin: 0 auto;
+    }
+
+    .nav a {
+      color: black;
+
+    }
+
+    .content-container {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 1000px;
+      margin: 0 auto;
+      background-color: rgb(242, 244, 247);
+    }
+
+    .banner img {
+      position: relative;
+      border: 1px solid #e3e7ee;
+      width: 670px;
+      height: 130px;
+      margin: 10px 0px 0px 10px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .login-wrap {
+      position: relative;
+      border: 1px solid #e3e7ee;
+      background: #fff;
+      margin: 10px 0px 0px 10px;
+      width: 300px;
+      height: 130px;
+      padding: 40px 10px;
+    }
+
+    .login-wrap button {
+      position: relative;
+      background: rgb(0, 199, 60);
+      border: 1px solid rgb(0, 199, 60);
+      color: white;
+      width: 100%;
+      height: 100%;
+      font-size: 20px;
+    }
+
+    .bottom-clock {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      color: rgb(0, 0, 0, 0.7);
+      text-align: right;
+      padding-right: 10px;
+    }
+
+    .goToTop {
+      position: fixed;
+      bottom: 50px;
+      right: 20px;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+    }
+
+    .any-content {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 100%;
+      margin: 0px 10px;
+    }
+
+    .left-top-content-wrap {
+      position: relative;
+      width: 670px;
+    }
+
+
+    .shopping-wrap {
+      position: relative;
+      width: 100%;
+      padding: 10px;
+    }
+
+    .shopping-top {
+      position: relative;
+      width: 100%;
+      border-bottom: 1px solid #e3e7ee;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+
+    .shopping-top-page {
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .shopping-top-page ul {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .shopping-list-wrap {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .shopping-list a {
+      display: inline-block;
+      width: 90px;
+      height: 100px;
+      margin: 5px 0;
+      padding: 5px;
+      color: black;
+
+    }
+
+    .shopping-list a:hover {
+      transform: scale(1.05);
+      transition: all 0.1s ease-in-out;
+      text-decoration: underline;
+      font-weight: bolder;
+    }
+
+
+
+    .shopping-list li {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .shopping-item {
+      width: 80px;
+      height: 60px;
+    }
+
+    .news-header-wrap {
+      background-color: white;
+      display: flex;
+      font-size: 14px;
+      height: 44px;
+      border: 1px solid #e3e7ee;
+      padding: 10px 10px;
+    }
+
+    .news-header {
+      position: relative;
+      height: 24px;
+    }
+
+    .yh-news a {
+      text-decoration: none;
+      color: #000000;
+    }
+
+    .news-header-text {
+      position: relative;
+      margin-left: 10px;
+      height: 24px;
+      overflow: hidden;
+    }
+
+    .news-main-wrap {
+      background-color: white;
+      margin-top: 10px;
+      height: 254px;
+      border: 1px solid #e3e7ee;
+    }
+
+    .news-main-top {
+      height: 44px;
+      padding: 8px;
+      border-bottom: 1px solid #e3e7ee;
+    }
+
+    .news-main-content {
+      position: relative;
+      height: 200px;
+    }
+
+    .news-main-content-list li {
+      display: inline-block;
+      width: 130px;
+      height: 100px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .news-main-content-list li:hover {
+      transform: scale(1.1);
+      transition: all 0.2s ease-in-out;
+      text-decoration: underline;
+      font-weight: bolder;
+    }
+
+    .news-image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .left-middle-nav-contents {
+      visibility: hidden;
+    }
+
+    .left-middle-nav-contents-view {
+      visibility: visible;
+    }
+
+    .left-middle-content-wrap {
+      position: relative;
+      margin: 10px 0px;
+      background-color: white;
+      border: 1px solid #e3e7ee;
+    }
+
+    .left-middle-content-top {
+      display: flex;
+      flex-direction: row;
+      width: 670px;
+      height: 44px;
+      border-bottom: 1px solid #e3e7ee;
+    }
+
+    .left-middle-content-top-nav-left {
+      position: relative;
+      width: 92%;
+      height: 100%;
+      margin: 0px;
+    }
+
+    .left-middle-content-list {
+      position: relative;
+      width: 8%;
+      height: 100%;
+      float: left;
+    }
+
+    .left-middle-content-list button {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      border: 1px solid #e3e7ee;
+      cursor: pointer;
+    }
+
+    .left-middle-content-nav-ul {
+      position: relative;
+      width: 510px;
+      height: 44px;
+      padding: 10px 0;
+      float: left;
+      white-space: nowrap;
+      overflow: hidden;
+      /*줄바꿈 안일어남*/
+    }
+
+    .left-middle-content-nav-ul a {
+      display: inline-block;
+      color: rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+    }
+
+    .left-middle-content-nav-ul a:hover {
+      color: rgba(0, 0, 0, 1);
+      transform: scale(1.03);
+    }
+
+    .left-middle-content-nav-ul li {
+      display: inline-block;
+      position: relative;
+      padding: 0 10px;
+    }
+
+    .left-middle-content-nav-ul li:first {
+      display: inline;
+      margin: 0;
+    }
+
+    .left-middle-content-top-nav-right {
+      position: relative;
+      width: 15%;
+      margin: 0px;
+    }
+
+    .left-middle-content-top-nav-right button {
+      border: 1px solid #e3e7ee;
+      position: relative;
+      float: left;
+      width: 50%;
+      height: 100%;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .left-middle-content {
+      position: relative;
+      padding: 10px;
+      width: 668px;
+      height: 700px;
+    }
+
+    .left-nav-border {
+      border-bottom: solid chocolate 2px;
+    }
+
+    .right-top-content-wrap {
+      position: relative;
+      width: 300px;
+      height: 100%;
+      margin-left: 10px;
+    }
+
+    .right-top-content {
+      position: relative;
+      background-color: white;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      border: 1px solid #e3e7ee;
+    }
+
+    .right-middle-content {
+      position: relative;
+      width: 100%;
+      height: 330px;
+      padding: 10px;
+      background-color: rgb(242, 246, 249);
+      border: 1px solid #e3e7ee;
+
+    }
+
+    .right-middle-title {
+      position: relative;
+      width: 100%;
+      height: 10%;
+      margin-top: 10px;
+    }
+
+    .right-middle-list {
+      position: relative;
+      width: 100%;
+      height: 90%;
+    }
+
+    .right-middle-list-ul {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 10px 10px 20px 10px;
+    }
+
+    .right-middle-list-ul li {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 30%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: white;
+      border: 1px solid #e3e7ee;
+    }
+
+
+    .play-item {
+      position: relative;
+      width: 40%;
+      height: 100%;
+      border: 1px solid #e3e7ee;
+    }
+
+    .play-item-text {
+      position: relative;
+      width: 60%;
+      height: 100%;
+      padding: 2px 5px;
+      font-size: 14px;
+    }
+
+
+    .foot-content {
+      border-top: 1px solid #e3e7ee;
+      position: relative;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .foot-copyright {
+      position: relative;
+      width: 1000px;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+
+    .foot-copyright li {
+      display: inline-block;
+      font-size: 12px;
+      margin: 0 10px;
+    }
+
+    .foot-copyright li:before {
+      float: left;
+      display: inline-table;
+      color: #000;
+      content: "\2022";
+      font-size: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div class="frame">
+    <div class="header-container">
+      <div class="search-wrap">
+        <div class="logo"></div>
+        <div class="search">
+          <input type="text" class="searchTerm" id="search-text" />
+          <button class="searchButton" id="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav-wrap">
+        <div class="nav">
+          <a href="#" whats="mail">메일</a>
+          <a href="#" whats="cafe">카페</a>
+          <a href="#" whats="blog">블로그</a>
+          <a href="#" whats="kin">지식iN</a>
+          <a href="#" whats="shopping">쇼핑</a>
+          <a href="#" whats="pay">Pay</a>
+          <a href="#" whats="tv">▷TV</a>
+          <a href="#" whats="dic">사전</a>
+          <a href="#" whats="news">뉴스</a>
+          <a href="#" whats="finance">증권</a>
+          <a href="#" whats="land">부동산</a>
+          <a href="#" whats="map">지도</a>
+          <a href="#" whats="movie">영화</a>
+          <a href="#" whats="music">뮤직</a>
+          <a href="#" whats="book">책</a>
+          <a href="#" whats="webtoon">웹툰</a>
+
+        </div>
+      </div>
+    </div>
+    <div class="content-container">
+      <div class="banner">
+        <a href="#"><img src="../data/img/banner1.jpg" id="banner-img" /></a>
+      </div>
+      <div class="login-wrap">
+        <button type="button" id="naverlogin" onclick='location.href="login.html"'>
+          NAVER 로그인
+        </button>
+      </div>
+      <div class="any-content">
+        <div class="left-top-content-wrap">
+          <div class="news-header-wrap">
+            <div class="news-header">
+              <h4 class="yh-news">
+                <a href="#">
+                  연합뉴스 >
+                </a>
+              </h4>
+            </div>
+            <div class="news-header-text">
+              <ol class="news-header-text-swap">
+                <li>조국 법무장관 임명 '반대 54.3%' vs '찬성 42.3%'</li>
+                <li>'시간당 최고 86㎜' 제주 요란한 가을장마…곳곳 침수</li>
+                <li>"日 국민 67%, 한국 수출규제 찬성"…한달새 9％p 늘어</li>
+                <li>Test1</li>
+              </ol>
+            </div>
+          </div>
+          <div class="news-main-wrap">
+            <div class="news-main-top">
+              <span style="font-size : 14px;"> 뉴스스탠드 > 전체언론사 | MY 뉴스
+              </span>
+            </div>
+            <div class="news-main-content">
+              <ul class="news-main-content-list">
+                <li><a st="facebook"><img st="facebook" class="news-image"></a></li>
+                <li><a st="twitter"><img st="twitter" class="news-image"></a></li>
+                <li><a st="youtube"><img st="youtube" class="news-image"></a></li>
+                <li><a st="instagram"><img st="instagram" class="news-image"></a></li>
+              </ul>
+
+            </div>
+          </div>
+          <div class="left-middle-content-wrap">
+            <div class="left-middle-content-top">
+              <div class="left-middle-content-top-nav-left">
+                <div class="left-middle-content-list">
+                  <button class="left-middle-nav">=</button>
+                  <div class="left-middle-nav-contents">
+                    sdafds
+                  </div>
+                </div>
+                <ul class="left-middle-content-nav-ul">
+                  <a class="left-middle-nav" mp="living">
+                    <li>리빙</li>
+                  </a>
+                  <a class="left-middle-nav" mp="food">
+                    <li>푸드</li>
+                  </a>
+                  <a class="left-middle-nav" mp="sports">
+                    <li>스포츠</li>
+                  </a>
+                  <a class="left-middle-nav" mp="car">
+                    <li>자동차</li>
+                  </a>
+                  <a class="left-middle-nav">
+                    <li>패션뷰티</li>
+                  </a>
+                  <a class="left-middle-nav">
+                    <li>부모i</li>
+                  </a>
+                  <a class="left-middle-nav">
+                    <li>건강</li>
+                  </a>
+                  <a class="left-middle-nav">
+                    <li>웹툰</li>
+                  </a>
+                  <a class="left-middle-nav">
+                    <li>여행</li>
+                  </a>
+                  <a class="left-middle-nav">
+                    <li>여행</li>
+                  </a>
+                  <a class="left-middle-nav">
+                    <li>자동차</li>
+                  </a>
+                  <a class="left-middle-nav">
+                    <li>자동차</li>
+                  </a>
+                  <a class="left-middle-nav">
+                    <li>자동차</li>
+                  </a>
+                </ul>
+              </div>
+              <div class="left-middle-content-top-nav-right">
+                <button class="left-middle-nav-left-btn">
+                  < </button> <button class="left-middle-nav-right-btn">
+                    >
+                </button>
+              </div>
+            </div>
+            <div class="left-middle-content">
+            </div>
+
+          </div>
+        </div>
+        <div class="right-top-content-wrap">
+          <div class="right-top-content">
+            <div class="shopping-wrap">
+              <div class="shopping-top">
+                <div class="shopping-top-menu">
+                  쇼핑
+                </div>
+                <div class="shopping-top-page">
+                  <ul class="shoppage">
+                    <li>1</li>/<li>2</li>
+                  </ul>
+                  <button id="shopprev" style="width:20px;">
+                    <</button> <button id="shopnext" style="width:20px;">>
+                  </button>
+                  </button>
+                </div>
+              </div>
+              <div class=" shopping-list-wrap">
+                <ul class="shopping-list">
+                  <a class="shopping-0text">
+                    <img class="shopping-item">
+                    <li>상품설명</li>
+                    <li>상품설명</li>
+                  </a>
+                  <a class="shopping-1text">
+                    <img class="shopping-item">
+                    <li>상품설명</li>
+                    <li>상품설명</li>
+                  </a>
+                  <a class="shopping-2text">
+                    <img class="shopping-item">
+                    <li>상품설명</li>
+                    <li>상품설명</li>
+                  </a>
+                  <a class="shopping-3text">
+                    <img class="shopping-item">
+                    <li>상품설명</li>
+                    <li>상품설명</li>
+                  </a>
+                  <a class="shopping-4text">
+                    <img class="shopping-item">
+                    <li>상품설명</li>
+                    <li>상품설명</li>
+                  </a>
+                  <a class="shopping-5text">
+                    <img class="shopping-item">
+                    <li>상품설명</li>
+                    <li>상품설명</li>
+                  </a>
+                  <a class="shopping-6text">
+                    <img class="shopping-item">
+                    <li>상품설명</li>
+                    <li>상품설명</li>
+                  </a>
+                  <a class="shopping-7text">
+                    <img class="shopping-item">
+                    <li>상품설명</li>
+                    <li>상품설명</li>
+                  </a>
+                  <a class="shopping-8text">
+                    <img class="shopping-item">
+                    <li>상품설명</li>
+                    <li>상품설명</li>
+                  </a>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="right-middle-content">
+            <div class="right-middle-title">
+              <h3 style="margin-left: 5px;">PLAY . FUN <button class="refresh-item">ㅁ</button></h3>
+            </div>
+            <div class="right-middle-list">
+              <ul class="right-middle-list-ul">
+                <li class="playitem1">
+                  <img src="../data/img/shop13.jpg" class="play-item">
+                  <div class="play-item-text">
+                    1111111111
+                  </div>
+
+                </li>
+                <li class="playitem2">
+                  <img src="../data/img/shop12.jpg" class="play-item">
+                  <div class="play-item-text">
+                    2222222222
+                  </div>
+
+                </li>
+                <li class="playitem3">
+                  <img src="../data/img/shop22.jpg" class="play-item">
+                  <div class="play-item-text">
+                    3333333333
+                  </div>
+
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="foot-content">
+      <ul class="foot-copyright">
+        <li>회사소개</li>
+        <li>인재채용</li>
+        <li>제휴제안</li>
+        <li>이용약관</li>
+        <li>개인정보처리방침</li>
+        <li>청소년보호정책</li>
+        <li>네이버 정책</li>
+        <li>고객센터</li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+  </div>
+  <img class="goToTop" src="../data/img/top.png">
+  </div>
+  <div class="bottom-clock">
+    <h3></h3>
+  </div>
+
+  <script src="naver_clock.js"></script>
+</body>
+
+</html>

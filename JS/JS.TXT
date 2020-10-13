@@ -1,0 +1,15 @@
+const 
+ - 상수 변수
+
+document.querySelector(".???")
+ - document의 .??? 중에서 첫 번째 자식
+
+event.preventDefault();
+ - ex) submit의 event default 값은 submit 했을 경우 화면이 새로고침 되는 것임.
+ - 그러나 위 함수? 로 그 default 값을 없앰
+
+classList.add/remove/length.....
+ - add(string) 목록에 문자열 추가, remove(string) 목록에 문자열 삭제 등
+
+localStorage.setItem(key, value)
+ - localStorage에 key와 value 저장 (브라우저에 계속 남아있음)

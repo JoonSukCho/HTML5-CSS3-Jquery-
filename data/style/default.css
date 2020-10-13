@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
+
+.main-frame{
+    border: 5px solid rgb(182, 182, 182);
+    width: "auto";
+    height: "auto";
+    font-size: 20px;
+    margin: 50px;
+    padding-left: 50px;
+}
+
+a {
+    font-size: 10px;
+    font-weight: 100;
+    font-size: 15px;
+    font-family: 'Lacquer', sans-serif;
+}
+
+.Write {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 60px;
+    text-align: center;
+    margin: 50px;
+}
+
+.naver {
+    text-align: center;
+    font-size: 40;
+    margin-top: 50px;
+}
+
+.content{
+    width:500px;
+    height: 500px;
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body{
+    background-image: url("../img/background2.jpg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    background-attachment: fixed;
+}

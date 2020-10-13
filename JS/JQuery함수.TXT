@@ -1,0 +1,34 @@
+parseFloat( string )
+ - 문자열을 실수로 바꿈
+
+find each
+ - 반복문, .each(function(index, element));
+ - ex) html - <div>
+		<span> 하나 </span>
+		<span> 둘 </span>
+		<span> 셋 </span>
+
+	JQuery
+		$('div').find('span').each(function(i, e){
+			console.log($(this).text());
+		});
+		- 하나 둘 셋 출력
+
+indexOf
+ - stringValue에서 특정한 '문자열'의 인덱스를 반환.
+ - 문자열이 없으면 -1 반환.
+ - ex) stringValue.indexOf('abc');
+
+map
+ - map( 배열, 인덱스)
+ - 배열을 재구성함
+
+Number()
+ - 문자열을 숫자로 반환하는 함수
+
+parseInt(), parseFloat()
+ - 문자열을 정수나, 실수로 바꿔주는 함수
+ - 문자로 시작하면 NaN 반환
+
+
+

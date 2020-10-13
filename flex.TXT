@@ -1,0 +1,4 @@
+
+flex container 加己: flex-direction, flex-wrap, justify-content, align-items, align-content
+flex item 加己: flex, flex-grow, flex-shrink, flex-basis, order
+ - https://d2.naver.com/helloworld/8540176 // flex 汲疙

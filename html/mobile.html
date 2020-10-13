@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .list {
+            width: 50%;
+            padding: 0 20px;
+            list-style: none;
+        }
+
+        .list li {
+            position: relative;
+            border-bottom: 1px solid #d1dce0;
+        }
+
+        .list li:last-child {
+            border-bottom: 0;
+        }
+
+        .list li a {
+            display: block;
+            padding-right: 90px;
+            font-size: 13px;
+            color: #000;
+            text-decoration: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+        }
+
+        .list li span {
+            position: absolute;
+            display: block;
+            top: 50%;
+            right: 0;
+            margin-top: -8px;
+            font-size: 12px;
+            color: #b8b8b8;
+        }
+
+        .wrap {
+            width: 600px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="list">
+            <li><a href="">[버스안내] 인천시 시내버스 정류소 명칭변경 안내</a><span>2017-12-26</span></li>
+            <li><a href="">[버스안내] 1월 5일(금)인천버스 정류소 신설 안내</a><span>2017-12-26</span></li>
+            <li><a href="">[버스안내] 1월 1일(월)남산 해맞이 행사 관련 순환버스 임시 노선변경 안내</a><span>2017-12-26</span></li>
+            <li><a href="">[버스안내] 1월 1일(월)마을버스 정류소 이설 안내</a><span>2017-12-26</span></li>
+            <li><a href="">[버스안내] 12월 31일(일)중앙버스전용차로 개통 안내</a><span>2017-12-26</span></li>
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+
+    <script
+      src="http://trirand.com/blog/jqgrid/js/jquery.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="http://trirand.com/blog/jqgrid/js/jquery.jqGrid.js"
+      type="text/javascript"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="http://trirand.com/blog/jqgrid/themes/redmond/jquery-ui-custom.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="http://trirand.com/blog/jqgrid/themes/ui.jqgrid.css"
+    />
+
+    <script type="text/javascript">
+      var tgrid;
+      jQuery(document).ready(function() {
+        tgrid = jQuery("#list19").jqGrid({
+          //url: 'http://trirand.com/blog/jqgrid/books_x.xml',
+          //datatype: "xml",
+          colNames: ["ASIN", "Author", "Title", "Price", "Published Date"],
+          colModel: [
+            {
+              name: "ASIN",
+              index: "ASIN",
+              width: 120,
+              xmlmap: "ItemAttributes>ASIN"
+            },
+            {
+              name: "Author",
+              index: "Author",
+              width: 120,
+              xmlmap: "ItemAttributes>Author"
+            },
+            {
+              name: "Title",
+              index: "Title",
+              width: 180,
+              xmlmap: "ItemAttributes>Title"
+            },
+            {
+              name: "Price",
+              index: "Manufacturer",
+              width: 100,
+              align: "right",
+              xmlmap: "ItemAttributes>Price",
+              sorttype: "float"
+            },
+            {
+              name: "DatePub",
+              index: "ProductGroup",
+              width: 130,
+              xmlmap: "ItemAttributes>DatePub",
+              sorttype: "date"
+            }
+          ],
+          height: 250,
+          loadtext: "Loading...",
+          rowNum: 10,
+          rowList: [10, 20, 30],
+          sortorder: "desc",
+          viewrecords: true,
+          loadonce: true,
+          xmlReader: {
+            root: "Items",
+            row: "Item",
+            repeatitems: false
+            //id: "ASIN"
+          },
+          caption: "XML example",
+          onSelectRow: selrowfn
+        });
+
+        $("#search").on("click", function() {
+          //alert('a');
+          tgrid
+            .setGridParam({
+              //datastr : obj
+
+              url: "http://trirand.com/blog/jqgrid/books.xml",
+              //, datatype : "xmlstring"
+              datatype: "xml",
+              page: 1
+            })
+            .trigger("reloadGrid");
+
+          //alert('b');
+        });
+
+        $("#findpay").on("click", function() {
+          var setId = -1;
+          var minPay = 99999999;
+          var rets = tgrid.jqGrid("getRowData");
+          for (var i = 0; i < rets.length; i++) {
+            var ret = rets[i];
+            var pay = parseFloat(ret["Price"]);
+            if (minPay > pay) {
+              minPay = pay;
+              setId = i;
+            }
+          }
+
+          $("#b_1").val(minPay);
+
+          tgrid.jqGrid("setSelection", setId + 1, false);
+        });
+        $("#findday").on("click", function() {
+          var setId = -1;
+          var minPay = new Date(9999, 12, 30);
+          var rets = tgrid.jqGrid("getRowData");
+          for (var i = 0; i < rets.length; i++) {
+            var ret = rets[i];
+            var pay = new Date(ret["DatePub"]);
+            if (minPay > pay) {
+              minPay = pay;
+              setId = i;
+            }
+          }
+
+          $("#b_2").val(minPay.yyyymmdd());
+
+          tgrid.jqGrid("setSelection", setId + 1, false);
+        });
+
+        // inp
+        $("#findAsinNum").on("click", function() {
+          var Asins = tgrid.jqGrid("getCol", "ASIN");
+          var AsinVal = $("#AsinNum").val();
+          var found = false;
+
+          for (var i = 0; i < Asins.length; i++) {
+            if (AsinVal == Asins[i]) {
+              var AsinIndex = Asins.indexOf(AsinVal);
+              found = true;
+            }
+          }
+          if (!found) {
+            alert("Not Found!");
+          }
+
+          var Authors = tgrid.jqGrid("getCol", "Author");
+          $("#AuthorName").val(Authors[AsinIndex]);
+
+          tgrid.jqGrid("setSelection", AsinIndex + 1);
+        });
+      });
+
+      Date.prototype.yyyymmdd = function() {
+        // 모든 Date의 인스턴스는 yyyymmdd 라는 함수를 가짐
+        //
+        var mm = this.getMonth() + 1; // getMonth() is zero-based
+        var dd = this.getDate();
+
+        return [
+          this.getFullYear(), // 연도 반환 (getYear()는 웹표준에서 사라짐)
+          (mm > 9 ? "" : "0") + mm,
+          (dd > 9 ? "" : "0") + dd
+        ].join("-"); // ''(공백)을 기준으로 문장을 연결해줌
+      };
+
+      function selrowfn(id, b, c) {
+        //alert( id );
+        var ret = tgrid.jqGrid("getRowData", id);
+        //alert( ret['ASIN'] );
+
+        $("#a_1").val(ret["ASIN"]);
+        $("#a_2").val(ret["Author"]);
+        $("#a_3").val(ret["Title"]);
+        $("#a_4").val(ret["Price"]);
+        $("#a_5").val(ret["DatePub"]);
+
+        // $("#AsinNum").val(ret["ASIN"]); // AsinNum을 입력해서
+        // setSelection 해보기
+      }
+    </script>
+
+    <style>
+      #aaa {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="aaa">grid sample</h1>
+
+    <div>
+      <button id="search">search</button>
+    </div>
+
+    <div>
+      <table id="list19"></table>
+    </div>
+
+    <div>
+      <ul>
+        <li><label>ASIN</label><input id="a_1" /></li>
+        <li><label>Author</label><input id="a_2" /></li>
+        <li><label>Title</label><input id="a_3" /></li>
+        <li><label>Price</label><input id="a_4" /></li>
+        <li><label>Published Date</label><input id="a_5" /></li>
+      </ul>
+    </div>
+
+    <div>
+      <button id="findpay">find min pay</button>
+    </div>
+
+    <div id="minpayview">
+      <ul>
+        <li><label>가장작은돈은 : </label><input id="b_1" /></li>
+      </ul>
+    </div>
+
+    <div>
+      <button id="findday">find min date</button>
+    </div>
+
+    <div id="mindateview">
+      <ul>
+        <li><label>가장빠른날은 : </label><input id="b_2" /></li>
+      </ul>
+    </div>
+
+    <div>
+      <li><label>AsinNum : </label><input id="AsinNum" /></li>
+      <button id="findAsinNum" alt="x">Find Asin Number</button>
+      <li><label>Author Name : </label><input id="AuthorName" /></li>
+    </div>
+  </body>
+</html>

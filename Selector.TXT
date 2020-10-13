@@ -1,0 +1,12 @@
+.class1 .class2 {
+ - class1과 class2 둘 다 속성 적용
+
+*
+ - 전부에게 속성 적용
+
+element > element {
+ - 자식에게만 속성 적용. 
+	ex) div > p{  = div에 있는 p에만 속성 적용
+
+:nth-child(n){
+ - n번 째 자식에게만 속성 적용

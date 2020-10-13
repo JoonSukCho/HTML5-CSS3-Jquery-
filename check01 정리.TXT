@@ -1,0 +1,45 @@
+<table>
+ - 테이블 생성 태그
+
+<th>
+ - 테이블 헤더 생성 태그
+
+<tr>
+ - 테이블 행 생성 태그
+
+<td>
+ - 테이블 열 생성 태그
+
+border-collapse: separate;
+ - 각 셀 테두리가 분리됨. 
+
+border-collapse: collapse;
+ - 셀 테두리가 엑셀처럼 됨. (겹쳐짐)
+
+box-sizing:border-box;
+ - 박스 사이즈를 정할 때, width=300px, border=100px 라고 가정했을 때,
+	box-sizing:border-box; 사용하면 테두리 포함해서 박스 크기를 잼
+ - ex) border 10px, width 100px = 총 width 110px
+	border 10px, width 100px, box-sizing:border-box; = 총 100px
+
+overflow: hidden;
+ - 정해진 width, height을 layout?이 벗어나지 않고 안에서 스크롤이 생김
+overflow: scroll;
+ - 정해진 width, height 상관 없이 무조건 스크롤 생김
+
+display: flex;
+ - flex 메모에 따로 설명
+
+max-height, min height: 50 vh;
+ - 레이아웃의 최대/최저 높이, vh = 윈도우 크기의 50%
+
+background-color: transparent;
+ - background-color를 부모와 같게
+
+line-height: 1.5;
+ - 글자 줄 높이. ex) 글자크기가 40px일 때 1.5면 40*1.5 = 60px
+
+box-shadow: 0 2px 2px 0
+ - 박스에 그림자
+
+

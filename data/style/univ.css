@@ -1,0 +1,35 @@
+
+body {
+    background-image: url("../img/DAEJIN_Background2.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+
+.main-frame {
+    text-align: center;
+    
+    width: 851px;
+    margin:auto;
+
+}
+
+#logo {
+    margin-top: 50px;
+    
+}
+
+.menu {
+    margin-top: 50px;
+}
+
+.menu-img {
+    float: left;
+   
+}
+
+.copyright {
+    margin-top: 80px;
+}
